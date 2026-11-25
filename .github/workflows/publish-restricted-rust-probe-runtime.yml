@@ -21,7 +21,7 @@ permissions:
 
 jobs:
   publish:
-    if: github.repository == 'ElevenID/feature-regression-private-publisher' && github.ref == 'refs/heads/main' && vars.PRIVATE_FORKS_ENABLED == 'true' && github.actor != 'dependabot[bot]'
+    if: github.repository == 'ElevenID/feature-regression-private-publisher' && github.ref == 'refs/heads/main' && (inputs.probe-only == true || vars.PRIVATE_FORKS_ENABLED == 'true') && github.actor != 'dependabot[bot]'
     uses: ElevenID/.github/.github/workflows/publish-restricted-rust-probe-runtime.yml@main
     with:
       bundle-id: ${{ inputs.bundle-id }}

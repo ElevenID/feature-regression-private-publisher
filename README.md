@@ -10,8 +10,10 @@ publication authority. Those must be added only through the protected central
 policy's reviewed publisher sequence. The target package remains private and
 unlinked to source repositories.
 
-The intended caller will use its repository-scoped `GITHUB_TOKEN` for write
-access to exactly the restricted package, avoiding a personal publisher token.
+The intended caller will use its repository-scoped `GITHUB_TOKEN` to publish
+to the fixed restricted package, avoiding a personal publisher token. The
+existing restricted package will receive this repository's only Manage Actions
+write grant; `packages: write` is not itself a package-specific token scope.
 Any private source reader credential will remain separate and read-only. Keep
 the organization GitHub Actions and Packages spending budgets at $0 overage.
 

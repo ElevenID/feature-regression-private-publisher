@@ -9,6 +9,11 @@ on:
         type: choice
         options:
           - marty-ui-auth-flow-20261124
+      probe-only:
+        description: Verify the protected reusable workflow identity without publishing
+        required: true
+        type: boolean
+        default: true
 
 permissions:
   contents: read
@@ -20,6 +25,7 @@ jobs:
     uses: ElevenID/.github/.github/workflows/publish-restricted-rust-probe-runtime.yml@main
     with:
       bundle-id: ${{ inputs.bundle-id }}
+      probe-only: ${{ inputs.probe-only }}
     secrets:
       PRIVATE_FORKS_READ_TOKEN: ${{ secrets.PRIVATE_FORKS_READ_TOKEN }}
       RUST_RUNTIME_PACKAGE_METADATA_TOKEN: ${{ secrets.RUST_RUNTIME_PACKAGE_METADATA_TOKEN }}

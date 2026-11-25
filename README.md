@@ -5,8 +5,8 @@ publishes the ElevenID restricted Auth/Flow observation runtime. It is an
 organization-owned workflow identity, not a source mirror or an application
 deployment.
 
-The repository has a gated manual publisher caller and a source-free reusable
-context probe. It has no configured secrets, runner, package grant, or
+The repository has a gated manual caller with a default source-free context
+probe mode. It has no configured secrets, runner, package grant, or
 publication authority; the enable flag is unset. Those must be added only
 through the protected central policy's reviewed publisher sequence. The target
 package remains private and unlinked to source repositories.
@@ -35,7 +35,7 @@ the organization GitHub Actions and Packages spending budgets at $0 overage.
    package-writer personal access token or new personal account is needed.
 4. After independent review and passing checks, grant this private repository
    package write access, verify that the package is still private and unlinked,
-   first run the source-free callee-context probe, then dispatch a source-free
+   first run the source-free callee-context probe mode, then dispatch a source-free
    permission probe before any restricted image.
    Confirm the $0 billing guard and available storage before publication.
 

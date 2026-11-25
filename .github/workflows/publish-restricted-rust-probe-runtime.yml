@@ -1,0 +1,25 @@
+name: Publish restricted Rust probe runtime
+
+on:
+  workflow_dispatch:
+    inputs:
+      bundle-id:
+        description: Reviewed runtime bundle
+        required: true
+        type: choice
+        options:
+          - marty-ui-auth-flow-20261124
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish:
+    if: github.repository == 'ElevenID/feature-regression-private-publisher' && github.ref == 'refs/heads/main' && vars.PRIVATE_FORKS_ENABLED == 'true' && github.actor != 'dependabot[bot]'
+    uses: ElevenID/.github/.github/workflows/publish-restricted-rust-probe-runtime.yml@main
+    with:
+      bundle-id: ${{ inputs.bundle-id }}
+    secrets:
+      PRIVATE_FORKS_READ_TOKEN: ${{ secrets.PRIVATE_FORKS_READ_TOKEN }}
+      RUST_RUNTIME_PACKAGE_METADATA_TOKEN: ${{ secrets.RUST_RUNTIME_PACKAGE_METADATA_TOKEN }}

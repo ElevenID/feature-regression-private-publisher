@@ -5,10 +5,11 @@ publishes the ElevenID restricted Auth/Flow observation runtime. It is an
 organization-owned workflow identity, not a source mirror or an application
 deployment.
 
-The repository currently has no workflow, secrets, runner, package grant, or
-publication authority. Those must be added only through the protected central
-policy's reviewed publisher sequence. The target package remains private and
-unlinked to source repositories.
+The repository has a gated manual workflow caller. It has no configured
+secrets, runner, package grant, or publication authority; the enable flag is
+unset. Those must be added only through the protected central policy's reviewed
+publisher sequence. The target package remains private and unlinked to source
+repositories.
 
 The intended caller will use its repository-scoped `GITHUB_TOKEN` to publish
 to the fixed restricted package, avoiding a personal publisher token. The
